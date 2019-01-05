@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<title>智能家居</title>
+	<link rel="stylesheet" type="text/css" href="./css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="./css/index.css"/>
+</head>
+<body>
+	<div class="app" :class="[sun==0?'yt':null]">
+		<div class="top">
+			<div @click="setUser()" class="icon-yonghu iconfont" ></div>
+			<div class="user_id">{{user_id}}</div>
+			<div class="icon-gengduo iconfont" ></div>
+		</div>
+
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="center">
+			<div class="circle">
+				<div class="inner-circle">
+				<span>+</span>
+					<span :class="[temp>20?'red':null]">{{temp}}°C</span>
+				<span>-</span>
+				</div>
+			</div>
+			<div class="center-bottom">
+				<div class="center-bottom-1">
+					<div>空气湿度 {{humi}} %</div>
+					<div>PM2.5 10 5</div>
+					<div>室外温度：11°</div>
+				</div>
+				<div class="center-bottom-2">
+					<div> <span class="icon-men iconfont"></span> 回家 </div>
+					<div @click="leaveHome()"> <span class="icon-fuwu iconfont"></span> 离家 </div>
+					<div> <span class="icon-shu iconfont"></span> 度假 </div>
+				</div>
+				<div class="center-bottom-3"  @click="ctrlCenterBox($event)">
+					<div @click="showCharts()"><span class="icon-icon iconfont"></span>图表查看</div>
+					<div><span class="icon-fanghuomibitaizhang iconfont"></span>防火防盗</div>
+					<div @click="ctrlLight()" :style="{color:isLightOn==true?'red':'white'}"><span class="icon-dengpao iconfont"></span>灯光控制</div>
+					<div @click="ctrlMusic()"><span class="iconfont" :class="[isMusicPlay==true?'icon-soundoff2':'icon-yinle']"></span>{{isMusicPlay==true?"暂停音乐":"播放音乐"}}</div>
+					<div><span class="icon-shiping-xue iconfont"></span>视频监控</div>
+					<div @click="ctrlKongTiao()" :style="{color:isKongTiaoOn==true?'blue':'white'}"><span class="icon-kongtiao iconfont"></span>
+						{{isKongTiaoOn==true?"关闭空调":"打开空调"}}
+					</div>
+				</div>
+			</div>
+		</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="charts" ref="charts"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="bottom">
+			<div><span class="icon-shouye iconfont"></span>
+			首页</div>
+			
+			<div><span class="icon-yuanchengkongzhi iconfont"></span>
+			远程控制</div>
+			
+			<div><span class="icon-Group iconfont"></span>
+			情景模式</div>
+			
+			<div><span class="icon-jiaren iconfont"></span>
+			家人</div>
+			 
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="./js/echarts.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./swiper/css/swiper.min.css"/>
+<script type="text/javascript" src="./swiper/js/swiper.min.js"></script>
+<script type="text/javascript" src="./js/vue.min.js"></script>
+<script type="text/javascript" src="./js/jquery.1.9.1.min.js"></script>
+<script type="text/javascript" src="./js/axios.min.js"></script>
+<script type="text/javascript" src="./js/layer/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="./js/layer/skin/default/layer.css"/>
+<script type="text/javascript" src="./js/index.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./mui/css/mui.min.css"/>
+<script type="text/javascript" src="./mui/js/mui.min.js"></script>
+</html>
